@@ -15,4 +15,7 @@
     <update id="updateBlog" parameterType="Blog">
         update blogs set author_name=#{author_name},title=#{title},context=#{context},datetime=#{datetime}  where id=#{id};
     </update>
+    <select id="queryAllBlogs" resultType="Blog">
+        select * from blogs;
+    </select>
 </mapper>

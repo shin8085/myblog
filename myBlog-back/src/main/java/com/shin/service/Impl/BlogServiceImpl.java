@@ -6,6 +6,8 @@ import com.shin.service.BlogService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BlogServiceImpl implements BlogService {
@@ -55,5 +57,16 @@ public class BlogServiceImpl implements BlogService {
             System.out.println(e);
         }
         return result;
+    }
+
+    @Override
+    public List<Blog> queryAllBlogs() {
+        List<Blog> blogs=new ArrayList<Blog>();
+        try {
+            blogs=blogMapper.queryAllBlogs();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return blogs;
     }
 }

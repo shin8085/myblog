@@ -6,7 +6,7 @@
     <typeAliases>
         <package name="com.shin.pojo"/>
     </typeAliases>
-    <mappers>
-        <mapper resource="com/shin/dao/mapping/BlogMapper.xml"/>
-    </mappers>
+<!--    <mappers>-->
+<!--        <mapper resource="com/shin/dao/mapping/BlogMapper.xml"/>-->
+<!--    </mappers>-->
 </configuration>
