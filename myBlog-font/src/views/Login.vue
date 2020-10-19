@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="账号" prop="username">
+      <el-form-item label="账号" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="ruleForm.password"></el-input>
+        <el-input v-model="ruleForm.password" show-password></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">登入</el-button>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Login",
   data() {
@@ -41,10 +42,17 @@ export default {
     submitForm: function (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          //this.$router.push("/main");
           this.$axios.post("/api/login",this.ruleForm).then(res => {
             if(res.data.code===200){
-
+              //校验通过
+              console.log(res)
+              this.$store.commit('setUserName',this.ruleForm.name) //设置全局变量
+              this.$router.push({
+                name:'main',
+                params:{
+                  name:this.ruleForm.name
+                }
+              });
             }else{
               this.$message({
                 showClose: true,

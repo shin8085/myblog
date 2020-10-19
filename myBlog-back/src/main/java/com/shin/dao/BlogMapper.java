@@ -9,5 +9,6 @@ public interface BlogMapper {
     int deleteBlogById(String id);
     Blog queryBlogById(String id);
     int updateBlog(Blog blog);
+    List<Blog> queryBlogsByUserName(String name);
     List<Blog> queryAllBlogs();
 }

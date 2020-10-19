@@ -18,5 +18,4 @@ public class Blog {
     private String title;
     private String context;
     private Timestamp datetime;
-
 }

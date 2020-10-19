@@ -60,6 +60,17 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<Blog> queryBlogsByUserName(String name) {
+        List<Blog> blogs=new ArrayList<Blog>();
+        try {
+            blogs=blogMapper.queryBlogsByUserName(name);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return blogs;
+    }
+
+    @Override
     public List<Blog> queryAllBlogs() {
         List<Blog> blogs=new ArrayList<Blog>();
         try {

@@ -6,11 +6,15 @@ import router from './router' //自动扫描
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import Axios from "axios";
+import store from "./store";
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios=Axios
 
 Vue.use(ElementUI);
+Vue.use(mavonEditor);
 
 
 /* eslint-disable no-new */
@@ -19,6 +23,7 @@ new Vue({
   render: h => h(App),
   //配置路由
   router,
+  store:store,
   components: { App },
   template: '<App/>',
 })
