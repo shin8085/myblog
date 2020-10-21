@@ -12,6 +12,8 @@
   "dependencies": {
     "axios": "^0.20.0",
     "element-ui": "^2.13.2",
+    "github-markdown-css": "^4.0.0",
+    "markdown-it": "^12.0.1",
     "mavon-editor": "^2.9.0",
     "store": "^2.0.12",
     "vue": "^2.5.2",

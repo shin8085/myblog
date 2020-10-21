@@ -1,13 +1,9 @@
 package com.shin.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.shin.pojo.Blog;
 import com.shin.pojo.User;
 import com.shin.service.BlogService;
 import com.shin.utils.Result;
-import jdk.nashorn.internal.parser.JSONParser;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,8 +38,16 @@ public class BlogController {
         List<Blog> blogs = blogService.queryBlogsByUserName(user.getName());
         return Result.success("true",blogs);
     }
-    @RequestMapping("/test")
-    public String test(){
-        return "test";
+
+    @RequestMapping("/getBlogById")
+    public Result getBlogById(@RequestParam("id") String id){
+        Blog blog = blogService.queryBlogById(id);
+        return Result.success("true",blog);
+    }
+
+    @RequestMapping("/deleteBlogById")
+    public Result deleteBlogById(@RequestParam("id") String id){
+        blogService.deleteBlogById(id);
+        return Result.success("删除成功！",null);
     }
 }

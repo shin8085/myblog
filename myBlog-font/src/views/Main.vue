@@ -8,9 +8,8 @@
       <div class="block">
         <el-timeline>
           <el-timeline-item v-for="blog in blogs" :key="blog.id" :timestamp="getDate(blog.datetime)" placement="top">
-            <el-card>
+            <el-card @click.native="toShowBlog(blog.id)" style="cursor: pointer;">
               <h4>{{blog.title}}</h4>
-<!--              <h4>{{blog.context}}</h4>-->
             </el-card>
           </el-timeline-item>
 
@@ -26,7 +25,6 @@ import MainHeader from "../components/MainHeader";
 export default {
   name: "Main",
   components: {MainHeader},
-  //props:['name'],
   data(){
     return{
       blogs:[]
@@ -39,12 +37,20 @@ export default {
       m = now.getMonth() + 1,
       d = now.getDate();
       return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
+    },
+    toShowBlog:function(id){
+      console.log(id)
+      this.$router.push({
+        name:'showBlog',
+        params:{
+          id:id,
+        }
+      });
     }
   },
   mounted() {
     this.$axios.post('/api/blog/getBlogsByUserName',{name:this.$store.getters.getUserName,password:null}).then(res=>{
       this.blogs=res.data.data
-      console.log(this.blogs)
     })
   }
 }

@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Main from "../views/Main";
 import Login from "../views/Login";
 import NewBlog from "../views/NewBlog";
+import ShowBlog from "../views/ShowBlog";
 
 //安装路由
 Vue.use(VueRouter)
@@ -32,6 +33,13 @@ export default new VueRouter({
       name:'newBlog',
       //跳转的组件
       component:NewBlog
-    }
+    },
+    {
+      path:'/showBlog/:id',
+      props:true,
+      name:'showBlog',
+      //跳转的组件
+      component:ShowBlog
+    },
   ]
 });
