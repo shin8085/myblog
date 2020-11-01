@@ -39,7 +39,6 @@ export default {
       return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
     },
     toShowBlog:function(id){
-      console.log(id)
       this.$router.push({
         name:'showBlog',
         params:{
@@ -49,7 +48,7 @@ export default {
     }
   },
   mounted() {
-    this.$axios.post('/api/blog/getBlogsByUserName',{name:this.$store.getters.getUserName,password:null}).then(res=>{
+    this.$axios.post('/api/blog/getBlogsByUserName',{name:sessionStorage.getItem("userName"),password:null}).then(res=>{
       this.blogs=res.data.data
     })
   }

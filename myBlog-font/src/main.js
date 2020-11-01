@@ -9,6 +9,7 @@ import Axios from "axios";
 import store from "./store";
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import './router/permission'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios=Axios

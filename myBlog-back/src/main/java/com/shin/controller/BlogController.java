@@ -23,9 +23,9 @@ public class BlogController {
         System.out.println(blog);
         int i = blogService.addBlog(blog);
         if(i!=0){
-            return Result.success("增加成功",null);
+            return Result.success("增加成功");
         }
-        return Result.error("增加失败",null);
+        return Result.error("增加失败");
     }
 
     @RequestMapping("/getAllBlogs")

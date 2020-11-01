@@ -25,21 +25,30 @@ export default new VueRouter({
       //props:true,
       name:'main',
       //跳转的组件
-      component:Main
+      component:Main,
+      meta:{
+        requireAuth:true
+      }
     },
     {
       path:'/newBlog',
       props:true,
       name:'newBlog',
       //跳转的组件
-      component:NewBlog
+      component:NewBlog,
+      meta:{
+        requireAuth:true
+      }
     },
     {
       path:'/showBlog/:id',
       props:true,
       name:'showBlog',
       //跳转的组件
-      component:ShowBlog
+      component:ShowBlog,
+      meta:{
+        requireAuth:true
+      }
     },
   ]
 });

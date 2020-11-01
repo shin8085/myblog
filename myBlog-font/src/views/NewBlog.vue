@@ -50,9 +50,9 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.editForm.author_name=this.$store.getters.getUserName;
+          this.editForm.author_name=sessionStorage.getItem("userName");
           this.editForm.datetime=new Date();
-          this.editForm.id=this.$store.getters.getUserName+new Date().getTime();
+          this.editForm.id=sessionStorage.getItem("userName")+new Date().getTime();
           this.$axios.post("/api/blog/addBlog",this.editForm).then(res=>{
             this.$alert('提交成功', '提示', {
               confirmButtonText: '返回首页',

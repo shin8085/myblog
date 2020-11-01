@@ -22,10 +22,22 @@ public class Result {
     public static Result success(String message, Object data){
         return success(200,message,data);
     }
+    public static Result success(String message){
+        return success(message,null);
+    }
+    public static Result success(){
+        return success("");
+    }
     public static Result error(int code,String message,Object data){
         return new Result(code,message,data);
     }
     public static Result error(String message, Object data){
         return error(404,message,data);
+    }
+    public static Result error(String message){
+        return error(message,null);
+    }
+    public static Result error(){
+        return error("");
     }
 }

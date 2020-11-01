@@ -17,6 +17,8 @@
 
 <script>
 
+import Axios from "axios";
+
 export default {
   name: "Login",
   data() {
@@ -45,8 +47,9 @@ export default {
           this.$axios.post("/api/login",this.ruleForm).then(res => {
             if(res.data.code===200){
               //校验通过
-              console.log(res)
-              this.$store.commit('setUserName',this.ruleForm.name) //设置全局变量
+              sessionStorage.setItem("loginSession",res.data.data.id);
+              //this.$store.commit('setUserName',this.ruleForm.name) //设置全局变量
+              sessionStorage.setItem('userName',this.ruleForm.name);
               this.$router.push({
                 name:'main',
                 params:{

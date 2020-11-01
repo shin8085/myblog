@@ -4,4 +4,5 @@ import com.shin.pojo.User;
 
 public interface LoginService {
     int checkLogin(User user);
+    User queryUserByName(String name);
 }

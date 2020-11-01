@@ -18,4 +18,9 @@ public class LoginServiceImpl implements LoginService {
     public int checkLogin(User user) {
         return userMapper.queryUser(user);
     }
+
+    @Override
+    public User queryUserByName(String name) {
+        return userMapper.queryUserByName(name);
+    }
 }
