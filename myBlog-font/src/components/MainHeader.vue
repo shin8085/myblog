@@ -18,13 +18,18 @@ export default {
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+      //console.log(key, keyPath);
     },
     toMain(){
       this.$router.push("/main");
     },
     toNewBlog(){
-      this.$router.push("/newBlog");
+      this.$router.push({
+        name:'editBlog',
+        params:{
+          id:"new",
+        }
+      });
     }
   }
 }

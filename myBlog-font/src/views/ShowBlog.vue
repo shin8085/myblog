@@ -7,10 +7,10 @@
       <el-main>
         <div>
           <h2>{{blog.title}}</h2>
+          <h4>{{ blog.author_name }}</h4>
+          <h4>{{this.getDate(blog.date)}}</h4>
           <div>
-            <span>{{ blog.author_name }}</span>
-            <el-divider direction="vertical"></el-divider>
-            <span>{{this.getDate(blog.date)}}</span>
+            <span @click="this.updateBlogById" style="cursor: pointer; color: blue">编辑</span>
             <el-divider direction="vertical"></el-divider>
             <span @click="this.deleteBlogById" style="cursor: pointer; color: red">删除</span>
           </div>
@@ -70,6 +70,14 @@ export default {
         });
       });
 
+    },
+    updateBlogById:function(){
+      this.$router.push({
+        name:'editBlog',
+        params:{
+          id:this.blog.id,
+        }
+      });
     }
   },
   mounted() {
@@ -89,5 +97,8 @@ export default {
 </script>
 
 <style scoped>
-
+.markdown-body{
+  margin-right: 300px;
+  margin-left: 300px;
+}
 </style>

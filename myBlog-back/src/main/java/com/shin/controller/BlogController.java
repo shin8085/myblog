@@ -50,4 +50,10 @@ public class BlogController {
         blogService.deleteBlogById(id);
         return Result.success("删除成功！",null);
     }
+
+    @RequestMapping("/updateBlog")
+    public Result updateBlog(@RequestBody Blog blog){
+        blogService.updateBlog(blog);
+        return Result.success("更新成功");
+    }
 }

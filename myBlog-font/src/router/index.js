@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 
 import Main from "../views/Main";
 import Login from "../views/Login";
-import NewBlog from "../views/NewBlog";
+import EditBlog from "../views/EditBlog";
 import ShowBlog from "../views/ShowBlog";
 
 //安装路由
@@ -31,11 +31,11 @@ export default new VueRouter({
       }
     },
     {
-      path:'/newBlog',
+      path:'/editBlog/:id',
       props:true,
-      name:'newBlog',
+      name:'editBlog',
       //跳转的组件
-      component:NewBlog,
+      component:EditBlog,
       meta:{
         requireAuth:true
       }
