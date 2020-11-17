@@ -24,6 +24,11 @@ public class AuthorityController {
     @Resource
     LoginService loginService;
 
+    /**
+     * 登入
+     * @param user 用户信息
+     * @return Result
+     */
     @RequestMapping("/login")
     public Result Login(@RequestBody User user){
 
@@ -43,6 +48,11 @@ public class AuthorityController {
         }
     }
 
+    /**
+     * 检查session是否正确
+     * @param session 会话
+     * @return Result
+     */
     @RequestMapping("/checkLoginSession")
     public Result checkLoginSession(@RequestParam("loginSession") String session){
         Subject subject = SecurityUtils.getSubject();
@@ -50,5 +60,17 @@ public class AuthorityController {
             return Result.success();
         }
         return Result.error();
+    }
+
+    /**
+     * 退出登入
+     * 检查session是否正确
+     * @return Result
+     */
+    @RequestMapping("/logout")
+    public Result logout(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return Result.success();
     }
 }

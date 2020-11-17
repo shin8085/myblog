@@ -1,9 +1,7 @@
 <template>
   <div>
-    <el-container>
-      <el-header>
-        <MainHeader/>
-      </el-header>
+    <el-container  direction="vertical">
+      <MainHeader/>
       <el-main>
         <div>
           <el-form :model="editForm" :rules="rules" ref="editForm" label-width="100px" class="demo-ruleForm">

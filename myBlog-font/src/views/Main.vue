@@ -1,9 +1,7 @@
 <template>
 <div>
-  <el-container>
-    <el-header>
-      <MainHeader/>
-    </el-header>
+  <el-container direction="vertical">
+    <MainHeader/>
     <el-main>
       <div class="block">
         <el-timeline>
@@ -27,6 +25,7 @@ export default {
   components: {MainHeader},
   data(){
     return{
+      h_height:"150px",
       blogs:[]
     }
   },

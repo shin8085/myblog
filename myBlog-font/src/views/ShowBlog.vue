@@ -1,9 +1,7 @@
 <template>
   <div>
-    <el-container>
-      <el-header>
-        <MainHeader/>
-      </el-header>
+    <el-container direction="vertical">
+      <MainHeader/>
       <el-main>
         <div>
           <h2>{{blog.title}}</h2>
