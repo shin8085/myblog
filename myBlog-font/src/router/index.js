@@ -5,6 +5,7 @@ import Main from "../views/Main";
 import Login from "../views/Login";
 import EditBlog from "../views/EditBlog";
 import ShowBlog from "../views/ShowBlog";
+import Register from "../views/Register"
 
 //安装路由
 Vue.use(VueRouter)
@@ -17,6 +18,10 @@ export default new VueRouter({
     {
       path:'/',
       component: Login
+    },
+    {
+      path: '/register',
+      component: Register
     },
     {
       //路由路径

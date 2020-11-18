@@ -2,6 +2,7 @@ package com.shin.controller;
 
 import com.shin.pojo.User;
 import com.shin.service.LoginService;
+import com.shin.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -24,8 +25,11 @@ public class AuthorityController {
     @Resource
     LoginService loginService;
 
+    @Resource
+    UserService userService;
+
     /**
-     * 登入
+     * 登录
      * @param user 用户信息
      * @return Result
      */
@@ -36,9 +40,9 @@ public class AuthorityController {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getName(),user.getPassword());
         try {
-            subject.login(token); //登入
+            subject.login(token); //登录
             Session session= subject.getSession();
-            return Result.success("登入成功",session);
+            return Result.success("登录成功",session);
         }catch (UnknownAccountException e){
             //用户名不存在
             return Result.error("用户不存在");
@@ -46,6 +50,22 @@ public class AuthorityController {
             //密码错误
             return Result.error("密码错误");
         }
+    }
+
+    /**
+     * 注册
+     * @param user 用户信息
+     * @return Result
+     */
+    @RequestMapping("/register")
+    public Result register(@RequestBody User user){
+        User r_user = loginService.queryUserByName(user.getName());
+        if(r_user==null){
+            //用户名不存在，可以注册
+            int i = userService.addUser(user);
+            return  Result.success("注册成功");
+        }
+        return Result.error("用户名已存在");
     }
 
     /**
@@ -63,7 +83,7 @@ public class AuthorityController {
     }
 
     /**
-     * 退出登入
+     * 退出登录
      * 检查session是否正确
      * @return Result
      */

@@ -8,16 +8,14 @@
         <el-input v-model="ruleForm.password" show-password></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">登入</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+        <el-button type="primary" @click="toRegister">注册</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-
-import Axios from "axios";
 
 export default {
   name: "Login",
@@ -40,7 +38,7 @@ export default {
     };
   },
   methods: {
-    //登入
+    //登录
     submitForm: function (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -69,8 +67,12 @@ export default {
       });
     },
     //重置
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+    // resetForm(formName) {
+    //   this.$refs[formName].resetFields();
+    // }
+    //注册
+    toRegister:function(){
+      this.$router.push('/register');
     }
   }
 }
